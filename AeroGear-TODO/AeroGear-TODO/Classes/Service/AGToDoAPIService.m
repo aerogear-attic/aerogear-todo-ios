@@ -62,7 +62,7 @@ static AGToDoAPIService *__sharedInstance;
             [config setBaseURL:projectsURL];
         }];
         
-        [_restAuthModule login:user password:passwd success:^(id object) {
+        [_restAuthModule login:@{@"username": user, @"password": passwd} success:^(id object) {
 
             AGPipeline* pipeline = [AGPipeline pipelineWithBaseURL:projectsURL];
             
