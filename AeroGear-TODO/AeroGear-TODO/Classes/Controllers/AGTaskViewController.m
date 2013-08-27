@@ -176,13 +176,17 @@ enum AGDueProjTagRows {
                 {
                     DateSelectionCell *dateCell = [[DateSelectionCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
                     dateCell.textLabel.text = @"Due Date";
-                    dateCell.detailTextLabel.text = _tempTask.dueDate;
                     
-                    NSDateFormatter *inputFormat = [[NSDateFormatter alloc] init];
-                    [inputFormat setDateFormat:@"yyyy-MM-dd"];
-                    NSDate *inputDate = [inputFormat dateFromString: _tempTask.dueDate];
-
-                    dateCell.dateValue = inputDate;
+                    // check if date is set
+                    if (![_tempTask.dueDate isKindOfClass:[NSNull class]]) {
+                        dateCell.detailTextLabel.text = _tempTask.dueDate;
+                    
+                        NSDateFormatter *inputFormat = [[NSDateFormatter alloc] init];
+                        [inputFormat setDateFormat:@"yyyy-MM-dd"];
+                        NSDate *inputDate = [inputFormat dateFromString: _tempTask.dueDate];
+                        dateCell.dateValue = inputDate;
+                    }
+                    
                     dateCell.delegate = self;
                     
                     cell = dateCell;                    
