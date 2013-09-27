@@ -4,6 +4,6 @@ platform :ios, '5.0'
 
 pod 'AeroGear', '1.2.0'
 
-pod 'PullToRefresh', '0.0.1'
+pod 'CKRefreshControl', '1.1.1'
 pod 'SVProgressHUD', '0.8'
 pod 'Color-Picker-for-iOS', '0.1.1' 

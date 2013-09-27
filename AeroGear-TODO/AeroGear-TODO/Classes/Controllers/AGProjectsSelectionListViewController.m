@@ -56,7 +56,10 @@
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
         self.tableView.allowsSelectionDuringEditing = YES;
     }
-
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    
     // initialize our "local" model
     _todoProjects = [NSMutableArray arrayWithArray:[[AGToDoAPIService sharedInstance].projects allValues]];    
 }
@@ -316,7 +319,7 @@
         
         [self.tableView reloadData];
     
-        [self stopLoading];
+        [self.refreshControl endRefreshing];
       
     } failure:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"

@@ -19,11 +19,9 @@
 
 #import "AGMetaEditorViewController.h"
 
-#import "PullRefreshTableViewController.h"
-
 @class AGTask;
 
-@interface AGProjectsSelectionListViewController : PullRefreshTableViewController <AGMetaEditorViewControllerDelegate>
+@interface AGProjectsSelectionListViewController : UITableViewController <AGMetaEditorViewControllerDelegate>
 
 @property(strong, nonatomic) AGTask *task;
 @property(assign, nonatomic) BOOL isEditMode;

@@ -55,6 +55,9 @@
         self.tableView.allowsSelectionDuringEditing = YES;
     }
 
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+
      // initialize our "local" model
     _todoTags = [NSMutableArray arrayWithArray:[[AGToDoAPIService sharedInstance].tags allValues]];    
 }
@@ -291,7 +294,7 @@
         
         [self.tableView reloadData];
         
-        [self stopLoading];
+        [self.refreshControl endRefreshing];
         
     } failure:^(NSError *error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"

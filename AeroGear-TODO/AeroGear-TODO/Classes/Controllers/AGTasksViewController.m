@@ -99,6 +99,9 @@
     // setup a "dummy" task that will be used for filtering
     _filterTask = [[AGTask alloc] init];
     
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    
     // retrieve Tasks
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     [self refresh];
@@ -316,14 +319,14 @@
         [SVProgressHUD dismiss];                
         _allTasks = tasks;
 
-        [self stopLoading];
+        [self.refreshControl endRefreshing];
         
         [self handleFilter];
 
     } failure:^(NSError *error) {
         [SVProgressHUD dismiss];
         
-        [self stopLoading];        
+        [self.refreshControl endRefreshing];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!"
                                                         message:[error localizedDescription]
