@@ -17,6 +17,30 @@
 
 #import "DateSelectionCell.h"
 
+/**
+ A category method on UITableViewCell that traverses the parent hierrachy and
+ returns a ref to the UITableView that this cell belongs.
+ Since iOS7, we can rely on 'self.superview' to return the enclosing UITableView
+ due to a change in hierrachy of UITableViewCell.
+ */
+@implementation UITableViewCell (ParentTableView)
+
+- (UITableView *)parentTableView {
+    UITableView *tableView;
+    UIView *view = self;
+    
+    while (view != nil) {
+        if([view isKindOfClass:[UITableView class]]) {
+            tableView = (UITableView *)view;
+            break;
+        }
+        view = [view superview];
+    }
+    
+    return tableView;
+}
+@end
+
 @implementation DateSelectionCell {
     UIToolbar *_toolbar;
 }
@@ -74,7 +98,7 @@
 }
 
 - (BOOL)resignFirstResponder {
-	UITableView *tableView = (UITableView *)self.superview;
+    UITableView *tableView = [self parentTableView];
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
 	
     return [super resignFirstResponder];
