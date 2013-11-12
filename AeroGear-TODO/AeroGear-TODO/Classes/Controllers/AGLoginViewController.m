@@ -47,17 +47,16 @@
     
     UIImage *background = [UIImage imageNamed: @"aerogear_logo.png"];
     _logo = [[UIImageView alloc] initWithImage:background];
-    _logo.center = CGPointMake(120, 60);
+    _logo.center = CGPointMake(160, 120);
     
     [self.view addSubview: _logo];
     
-    _loginTxt = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, 100, 40)];
-    _loginTxt.text = @"Login:";
-    _loginTxt.font = [UIFont boldSystemFontOfSize:24];
+    _loginTxt = [[UILabel alloc] initWithFrame:CGRectMake(200, 160, 200, 32)];
+    _loginTxt.text = @"TODO";
     
     [self.view addSubview: _loginTxt];
     
-    _username = [[UITextField alloc] initWithFrame:CGRectMake(0, 160, 200, 32)];
+    _username = [[UITextField alloc] initWithFrame:CGRectMake(60, 200, 200, 32)];
     _username.borderStyle = UITextBorderStyleRoundedRect;
     _username.placeholder = @"Username";
     _username.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -65,7 +64,7 @@
     _username.delegate = self;
     
     
-    _password = [[UITextField alloc] initWithFrame:CGRectMake(0, 206, 200, 32)];
+    _password = [[UITextField alloc] initWithFrame:CGRectMake(60, 236, 200, 32)];
     _password.borderStyle = UITextBorderStyleRoundedRect;
     _password.placeholder = @"Password";
     _password.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -77,7 +76,7 @@
     [self.view addSubview:_password];
     
     _login = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _login.frame = CGRectMake(0, 256, 200, 32);
+    _login.frame = CGRectMake(60, 286, 200, 32);
     [_login addTarget:self action:@selector(login:)
         forControlEvents:UIControlEventTouchDown];
     
@@ -85,14 +84,14 @@
     
     [self.view addSubview:_login];
 
-    _registerTxt = [[UILabel alloc] initWithFrame:CGRectMake(0, 310, 240, 40)];
+    _registerTxt = [[UILabel alloc] initWithFrame:CGRectMake(80, 330, 240, 40)];
     _registerTxt.text = @"Need an account?";
-    _registerTxt.font = [UIFont boldSystemFontOfSize:24];
+    _registerTxt.font = [UIFont boldSystemFontOfSize:18];
     
     [self.view addSubview:_registerTxt];
     
     _register = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    _register.frame = CGRectMake(0, 360, 200, 32);
+    _register.frame = CGRectMake(60, 380, 200, 32);
     [_register addTarget:self action:@selector(enroll:)
         forControlEvents:UIControlEventTouchDown];
     [_register setTitle:@"Sign up" forState:UIControlStateNormal];
