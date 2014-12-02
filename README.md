@@ -1,5 +1,8 @@
-iOS TODO application
+iOS TODO application   
 --------------------
+
+> **NOTE:**  The demo has been discontinued and will not be further developed. Please have a look at our [ios-cookbook repository](https://github.com/aerogear/aerogear-ios-cookbook) instead for the latest examples that exercise the AeroGear iOS libraries.
+
 
 This application demonstrates the functionality offered by [AeroGear](http://aerogear.org) library for iOS.
 It connects to the [TODO server application](https://todo-aerogear.rhcloud.com) running in Openshift, and it will allow you to perform CRUD operations
